@@ -34,21 +34,7 @@ public class ExtensionPanel extends JPanel implements ActionListener
     /**
      * It is the reference to the interface of the application
      */
-    private SurveyInterface mainWindow;
-
-    // -----------------------------------------------------------------
-    // Interface Attributes
-    // -----------------------------------------------------------------
-
-    /**
-     * It is button 1
-     */
-    private JButton buttonOption1;
-
-    /**
-     * It is button 2
-     */
-    private JButton buttonOption2;
+    private final SurveyInterface mainWindow;
 
     // -----------------------------------------------------------------
     // Builders
@@ -63,19 +49,19 @@ public class ExtensionPanel extends JPanel implements ActionListener
     {
         mainWindow = ip;
 
-        setBorder( new TitledBorder( "Extension Points" ) );
+        setBorder(new TitledBorder("Extension Points"));
+        setLayout(new FlowLayout());
 
-        setLayout( new FlowLayout( ) );
-        buttonOption1 = new JButton( "Option 1" );
-        buttonOption1.setActionCommand( OPTION_1 );
-        buttonOption1.addActionListener( this );
+        JButton buttonOption1 = new JButton("Option 1");
+        buttonOption1.setActionCommand(OPTION_1);
+        buttonOption1.addActionListener(this);
 
-        buttonOption2 = new JButton( "Option 2" );
-        buttonOption2.setActionCommand( OPTION_2 );
-        buttonOption2.addActionListener( this );
+        JButton buttonOption2 = new JButton("Option 2");
+        buttonOption2.setActionCommand(OPTION_2);
+        buttonOption2.addActionListener(this);
 
-        add( buttonOption1 );
-        add( buttonOption2 );
+        add(buttonOption1);
+        add(buttonOption2);
     }
 
     // -----------------------------------------------------------------

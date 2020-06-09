@@ -35,52 +35,27 @@ public class ResultsPanel extends JPanel implements ActionListener
     /**
      * Main window
      */
-    private SurveyInterface mainWindow;
-
-    /**
-     * Average label
-     */
-    private JLabel averageLabel;
-
-    /**
-     * Number of opinions label
-     */
-    private JLabel numberOfOpinionsLabel;
+    private final SurveyInterface mainWindow;
 
     /**
      * Total average label
      */
-    private JLabel totalAverageLabel;
+    private final JLabel totalAverageLabel;
 
     /**
      * Number of opinions result
      */
-    private JLabel numberOfOpinions;
-
-    /**
-     * Range label
-     */
-    private JLabel rangeLabel;
-
-    /**
-     * Marital status label
-     */
-    private JLabel maritalStatusLabel;
-
-    /**
-     * Consult button
-     */
-    private JButton buttonConsult;
+    private final JLabel numberOfOpinions;
 
     /**
      * Combo with the ranges
      */
-    private JComboBox comboRange;
+    private final JComboBox<String> comboRange;
 
     /**
      * Combo marital status
      */
-    private JComboBox comboMaritalStatus;
+    private final JComboBox<String> comboMaritalStatus;
 
     // -----------------------------------------------------------
     // Builders
@@ -93,45 +68,50 @@ public class ResultsPanel extends JPanel implements ActionListener
     public ResultsPanel( SurveyInterface main )
     {
         mainWindow = main;
-        setLayout( new GridLayout( 2, 1 ) );
+        setLayout(new GridLayout(2, 1));
 
-        TitledBorder title = BorderFactory.createTitledBorder( "SURVEY RESULTS" );
-        title.setTitleJustification( TitledBorder.CENTER );
-        title.setTitleColor( new Color( 16, 78, 139 ) );
-        setBorder( title );
+        TitledBorder title = BorderFactory.createTitledBorder("SURVEY RESULTS");
+        title.setTitleJustification(TitledBorder.CENTER);
+        title.setTitleColor(new Color(16, 78, 139));
+        setBorder(title);
 
-        averageLabel = new JLabel( "Suvey total average: " );
-        numberOfOpinionsLabel = new JLabel( "Number of opinions: " );
-        totalAverageLabel = new JLabel( );
-        numberOfOpinions = new JLabel( );
-        rangeLabel = new JLabel( "Age range" );
-        maritalStatusLabel = new JLabel( "Marital Status" );
+        // Average label
+        JLabel averageLabel = new JLabel("Suvey total average: ");
+        // Number of opinions label
+        JLabel numberOfOpinionsLabel = new JLabel("Number of opinions: ");
+        totalAverageLabel = new JLabel();
+        numberOfOpinions = new JLabel();
+        // Range label
+        JLabel rangeLabel = new JLabel("Age range");
+        // Marital status label
+        JLabel maritalStatusLabel = new JLabel("Marital Status");
 
-        buttonConsult = new JButton( "Consult" );
-        buttonConsult.addActionListener( this );
-        buttonConsult.setActionCommand( CONSULT );
+        // Consult button
+        JButton buttonConsult = new JButton("Consult");
+        buttonConsult.addActionListener(this);
+        buttonConsult.setActionCommand(CONSULT);
 
-        String[] rangesList = { "0-17 years", "18-55 years", "56 or more years" };
-        comboRange = new JComboBox( rangesList );
+        String[] rangesList = {"0-17 years", "18-55 years", "56 or more years"};
+        comboRange = new JComboBox<>(rangesList);
 
-        String[] statusList = { "Married", "Single" };
-        comboMaritalStatus = new JComboBox( statusList );
+        String[] statusList = {"Married", "Single"};
+        comboMaritalStatus = new JComboBox<>(statusList);
 
-        JPanel internalPanel1 = new JPanel( );
+        JPanel internalPanel1 = new JPanel();
         JPanel internalPanel2 = new JPanel( );
         internalPanel1.setLayout( new FlowLayout( ) );
         internalPanel2.setLayout( new FlowLayout( ) );
 
-        internalPanel1.add( averageLabel );
-        internalPanel1.add( totalAverageLabel );
-        internalPanel1.add( numberOfOpinionsLabel );
-        internalPanel1.add( numberOfOpinions );
+        internalPanel1.add(averageLabel);
+        internalPanel1.add(totalAverageLabel);
+        internalPanel1.add(numberOfOpinionsLabel);
+        internalPanel1.add(numberOfOpinions);
 
-        internalPanel2.add( rangeLabel );
-        internalPanel2.add( comboRange );
-        internalPanel2.add( maritalStatusLabel );
-        internalPanel2.add( comboMaritalStatus );
-        internalPanel2.add( buttonConsult );
+        internalPanel2.add(rangeLabel);
+        internalPanel2.add(comboRange);
+        internalPanel2.add(maritalStatusLabel);
+        internalPanel2.add(comboMaritalStatus);
+        internalPanel2.add(buttonConsult);
 
         add( internalPanel1 );
         add( internalPanel2 );
@@ -170,8 +150,8 @@ public class ResultsPanel extends JPanel implements ActionListener
      */
     private void showResults( double result, int range, boolean isMarried )
     {
-        String maritalStatus = ( isMarried == true ? "married" : "single" );
-        String rangeInWords = ( range == 1 ? "0-18 years" : ( range == 2 ? "19-60 years" : "61 or more years" ) );
+        String maritalStatus = (isMarried ? "married" : "single");
+        String rangeInWords = (range == 1 ? "0-18 years" : (range == 2 ? "19-60 years" : "61 or more years"));
         String message;
 
         DecimalFormat df = ( DecimalFormat )NumberFormat.getInstance( );
@@ -195,13 +175,12 @@ public class ResultsPanel extends JPanel implements ActionListener
      */
     public void actionPerformed( ActionEvent e )
     {
-        if( e.getActionCommand( ) == CONSULT )
-        {
-            boolean irMarried = ( comboMaritalStatus.getSelectedIndex( ) == 0 ? true : false );
-            int range = comboRange.getSelectedIndex( ) + 1;
+        if (e.getActionCommand().equals(CONSULT)) {
+            boolean irMarried = (comboMaritalStatus.getSelectedIndex() == 0);
+            int range = comboRange.getSelectedIndex() + 1;
 
-            double result = mainWindow.getPartialResults( range, irMarried );
-            showResults( result, range, irMarried );
+            double result = mainWindow.getPartialResults(range, irMarried);
+            showResults(result, range, irMarried);
         }
     }
 }

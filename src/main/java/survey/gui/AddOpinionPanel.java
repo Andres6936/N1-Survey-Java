@@ -33,51 +33,26 @@ public class AddOpinionPanel extends JPanel implements ActionListener
     /**
      * Principal window
      */
-    private SurveyInterface mainWindow;
+    private final SurveyInterface mainWindow;
 
     // -----------------------------------------------------------
     // Interface Attributes
     // -----------------------------------------------------------
 
     /**
-     * Question label
-     */
-    private JLabel questionLabel;
-
-    /**
-     * Range label
-     */
-    private JLabel rangeLabel;
-
-    /**
-     * Opinion label
-     */
-    private JLabel opinionLabel;
-
-    /**
-     * Marital status label
-     */
-    private JLabel maritalStatusLabel;
-
-    /**
-     * Add opinion button
-     */
-    private JButton buttonAddOpinion;
-
-    /**
      * Combo range
      */
-    private JComboBox comboRange;
+    private final JComboBox<String> comboRange;
 
     /**
      * Combo opinion
      */
-    private JComboBox comboOpinion;
+    private final JComboBox<String> comboOpinion;
 
     /**
      * Combo marital status
      */
-    private JComboBox comboMaritalStatus;
+    private final JComboBox<String> comboMaritalStatus;
 
     // -----------------------------------------------------------
     // Builders
@@ -90,32 +65,32 @@ public class AddOpinionPanel extends JPanel implements ActionListener
     public AddOpinionPanel( SurveyInterface main )
     {
         mainWindow = main;
-        setLayout( new GridLayout( 3, 1 ) );
-        TitledBorder tittle = BorderFactory.createTitledBorder( "ADD OPINION TO SURVEY" );
-        tittle.setTitleJustification( TitledBorder.CENTER );
-        tittle.setTitleColor( new Color( 16, 78, 139 ) );
-        setBorder( tittle );
+        setLayout(new GridLayout(3, 1));
+        TitledBorder tittle = BorderFactory.createTitledBorder("ADD OPINION TO SURVEY");
+        tittle.setTitleJustification(TitledBorder.CENTER);
+        tittle.setTitleColor(new Color(16, 78, 139));
+        setBorder(tittle);
 
-        questionLabel = new JLabel( "What is your opinion about this course? Rate of 0-10" );
-        rangeLabel = new JLabel( "Age range" );
-        opinionLabel = new JLabel( "Opinion" );
-        maritalStatusLabel = new JLabel( "Marital status" );
+        JLabel questionLabel = new JLabel("What is your opinion about this course? Rate of 0-10");
+        JLabel rangeLabel = new JLabel("Age range");
+        JLabel opinionLabel = new JLabel("Opinion");
+        JLabel maritalStatusLabel = new JLabel("Marital status");
 
-        buttonAddOpinion = new JButton( "Add opinion" );
-        buttonAddOpinion.addActionListener( this );
-        buttonAddOpinion.setActionCommand( ADD_OPINION );
+        JButton buttonAddOpinion = new JButton("Add opinion");
+        buttonAddOpinion.addActionListener(this);
+        buttonAddOpinion.setActionCommand(ADD_OPINION);
 
-        String[] rangesList = { "0-17 years", "18-55 years", "56 or more years" };
-        comboRange = new JComboBox( rangesList );
-        comboRange.addActionListener( this );
+        String[] rangesList = {"0-17 years", "18-55 years", "56 or more years"};
+        comboRange = new JComboBox<>(rangesList);
+        comboRange.addActionListener(this);
 
-        String[] statusList = { "Maried", "Single" };
-        comboMaritalStatus = new JComboBox( statusList );
-        comboMaritalStatus.addActionListener( this );
+        String[] statusList = {"Maried", "Single"};
+        comboMaritalStatus = new JComboBox<>(statusList);
+        comboMaritalStatus.addActionListener(this);
 
         String[] opinionsList = { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" };
-        comboOpinion = new JComboBox( opinionsList );
-        comboOpinion.addActionListener( this );
+        comboOpinion = new JComboBox<>(opinionsList);
+        comboOpinion.addActionListener(this);
 
         JPanel internalPanel1 = new JPanel( );
         internalPanel1.setLayout( new FlowLayout( ) );
@@ -125,19 +100,19 @@ public class AddOpinionPanel extends JPanel implements ActionListener
         JPanel internalPanel3 = new JPanel( );
         internalPanel3.setLayout( new FlowLayout( ) );
 
-        internalPanel1.add( questionLabel );
+        internalPanel1.add(questionLabel);
 
         Border borde = BorderFactory.createEtchedBorder( );
         internalPanel1.setBorder( borde );
 
-        internalPanel2.add( rangeLabel );
-        internalPanel2.add( comboRange );
-        internalPanel2.add( maritalStatusLabel );
-        internalPanel2.add( comboMaritalStatus );
-        internalPanel2.add( opinionLabel );
-        internalPanel2.add( comboOpinion );
+        internalPanel2.add(rangeLabel);
+        internalPanel2.add(comboRange);
+        internalPanel2.add(maritalStatusLabel);
+        internalPanel2.add(comboMaritalStatus);
+        internalPanel2.add(opinionLabel);
+        internalPanel2.add(comboOpinion);
 
-        internalPanel3.add( buttonAddOpinion );
+        internalPanel3.add(buttonAddOpinion);
 
         add( internalPanel1 );
         add( internalPanel2 );
@@ -155,14 +130,13 @@ public class AddOpinionPanel extends JPanel implements ActionListener
      */
     public void actionPerformed( ActionEvent e )
     {
-        if( e.getActionCommand( ) == ADD_OPINION )
-        {
-            int opinion = comboOpinion.getSelectedIndex( );
-            int range = comboRange.getSelectedIndex( ) + 1;
-            boolean isMarried = ( comboMaritalStatus.getSelectedIndex( ) == 0 ? true : false );
-            getToolkit( ).beep( );
-            mainWindow.addOpinion( range, isMarried, opinion );
-            mainWindow.updateResults( );
+        if (e.getActionCommand().equals(ADD_OPINION)) {
+            int opinion = comboOpinion.getSelectedIndex();
+            int range = comboRange.getSelectedIndex() + 1;
+            boolean isMarried = (comboMaritalStatus.getSelectedIndex() == 0);
+            getToolkit().beep();
+            mainWindow.addOpinion(range, isMarried, opinion);
+            mainWindow.updateResults();
         }
 
     }

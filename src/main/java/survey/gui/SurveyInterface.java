@@ -24,22 +24,12 @@ public class SurveyInterface extends JFrame
     /**
      * Panel where the results are shown
      */
-    private ResultsPanel resultsPanel;
-
-    /**
-     * Panel to add an opinion
-     */
-    private AddOpinionPanel panelAddOpinion;
-
-    /**
-     * Panel with the extensions
-     */
-    private ExtensionPanel extensionPanel;
+    private final ResultsPanel resultsPanel;
 
     /**
      * Survey
      */
-    private Survey survey;
+    private final Survey survey;
 
     // -----------------------------------------------------------
     // Builders
@@ -51,26 +41,29 @@ public class SurveyInterface extends JFrame
     public SurveyInterface( )
     {
 
-        setDefaultCloseOperation( JFrame.DISPOSE_ON_CLOSE );
-        setVisible( true );
-        setResizable( false );
-        setTitle( "Survey 1.0" );
-        getContentPane( ).setLayout( new BorderLayout( ) );
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        setVisible(true);
+        setResizable(false);
+        setTitle("Survey 1.0");
+        getContentPane().setLayout(new BorderLayout());
 
-        survey = new Survey( );
-        survey.initialize( );
-        resultsPanel = new ResultsPanel( this );
-        panelAddOpinion = new AddOpinionPanel( this );
-        extensionPanel = new ExtensionPanel( this );
+        survey = new Survey();
+        survey.initialize();
+        resultsPanel = new ResultsPanel(this);
 
-        JPanel centralPanel = new JPanel( new GridLayout( 2, 1 ) );
-        centralPanel.add( panelAddOpinion );
-        centralPanel.add( resultsPanel );
+        // Panel to add an opinion
+        AddOpinionPanel panelAddOpinion = new AddOpinionPanel(this);
+        // Panel with the extensions
+        ExtensionPanel extensionPanel = new ExtensionPanel(this);
 
-        getContentPane( ).add( centralPanel, BorderLayout.CENTER );
-        getContentPane( ).add( extensionPanel, BorderLayout.SOUTH );
+        JPanel centralPanel = new JPanel(new GridLayout(2, 1));
+        centralPanel.add(panelAddOpinion);
+        centralPanel.add(resultsPanel);
 
-        pack( );
+        getContentPane().add(centralPanel, BorderLayout.CENTER);
+        getContentPane().add(extensionPanel, BorderLayout.SOUTH);
+
+        pack();
 
         centerFrame( );
     }
