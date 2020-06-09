@@ -9,6 +9,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+import com.formdev.flatlaf.FlatIntelliJLaf;
 import survey.domain.Survey;
 
 /**
@@ -225,8 +226,8 @@ public class SurveyInterface extends JFrame
      */
     public static void main( String[] args )
     {
+        FlatIntelliJLaf.install();
         SurveyInterface anInterface = new SurveyInterface( );
         anInterface.setVisible( true );
-
     }
 }
