@@ -1,4 +1,4 @@
-package main.java.survey.gui;
+package survey.gui;
 
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;

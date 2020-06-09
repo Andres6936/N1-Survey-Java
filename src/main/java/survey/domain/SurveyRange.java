@@ -1,4 +1,4 @@
-package main.java.survey.domain;
+package survey.domain;
 
 
 /**

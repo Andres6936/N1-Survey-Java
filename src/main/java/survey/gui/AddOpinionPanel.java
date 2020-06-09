@@ -1,4 +1,4 @@
-package main.java.survey.gui;
+package survey.gui;
 
 import java.awt.Color;
 import java.awt.FlowLayout;
