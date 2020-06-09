@@ -20,4 +20,6 @@ calculating the results there is at least one person from each profile.
 
 The interface is the one shown below:
 
-![InterfaceGUI](data/InterfaceGUI.jpg)
+<p align="center">
+    <img src="data/Interface.png" alt="Interface"/>
+</p>
