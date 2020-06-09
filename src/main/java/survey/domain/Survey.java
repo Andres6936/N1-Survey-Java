@@ -1,4 +1,4 @@
-package edu.jabs.survey.domain;
+package main.java.survey.domain;
 
 
 /**

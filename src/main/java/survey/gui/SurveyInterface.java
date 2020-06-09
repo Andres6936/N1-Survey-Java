@@ -1,4 +1,4 @@
-package edu.jabs.survey.gui;
+package main.java.survey.gui;
 
 
 import java.awt.BorderLayout;
@@ -9,7 +9,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-import edu.jabs.survey.domain.Survey;
+import main.java.survey.domain.Survey;
 
 /**
  * Main window of the application

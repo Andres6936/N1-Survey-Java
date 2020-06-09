@@ -1,4 +1,4 @@
-package edu.jabs.survey.gui;
+package main.java.survey.gui;
 
 import java.awt.Color;
 import java.awt.FlowLayout;
